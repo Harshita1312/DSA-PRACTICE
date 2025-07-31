@@ -1,0 +1,16 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+      
+      String str ="ProgramminG123";
+      String clearStr = str.toLowerCase().replaceAll("[^a-z]","");
+      System.out.println(clearStr);
+      
+      HashMap<Character,Integer> map = new HashMap<>();
+      for(char ch : clearStr.toCharArray()){
+        map.put(ch,map.getOrDefault(ch,0)+1);
+      }
+      System.out.println(map);
+  }
+}
