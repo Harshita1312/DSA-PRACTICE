@@ -1,4 +1,44 @@
 class Solution {
+    public void merge(int[] arr, int low, int mid, int high){
+        ArrayList<Integer> temp = new ArrayList<>();
+        int left = low;
+        int right = mid+1;
+        while(left<=mid && right<=high){
+            if(arr[left] <= arr[right]){
+                temp.add(arr[left++]);
+            }
+            else{
+                temp.add(arr[right++]);
+            }
+        }
+        while(left<=mid){
+            temp.add(arr[left++]);
+        }
+        while(right<=high){
+            temp.add(arr[right++]);
+        }
+        for(int i=low; i<=high; i++){
+            arr[i] = temp.get(i-low);
+        }
+    }
+    public int[] mergeSort(int[] arr, int low, int high) {
+        if(low<high){
+            int mid = (low + high)/2;
+            mergeSort(arr, low, mid);
+            mergeSort(arr, mid+1, high);
+            merge(arr, low, mid, high);
+        }
+        return arr;
+    }
+    public int[] mergeSort(int[] nums) {
+        
+        return mergeSort(nums, 0, nums.length-1);
+    }
+}
+
+---------------------------------------------------------------------------------
+    
+class Solution {
     public void conquer(int[] arr, int s, int mid, int e){
         int[] merged = new int[e-s+1];
         int i = s, j = mid+1, x=0;
